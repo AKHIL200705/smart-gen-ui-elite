@@ -1,0 +1,310 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ===========================================================
+ * Smart Gen — Premium Glassmorphism Design System
+ * Palette: Navy / Royal Blue / Emerald / Gold on cream-white.
+ * All colors authored in oklch.
+ * =========================================================== */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+  --radius-4xl: calc(var(--radius) + 24px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-royal: var(--royal);
+  --color-emerald: var(--emerald);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+
+  --font-display: "Fraunces", "Cormorant Garamond", serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-glass:
+    0 30px 80px -30px color-mix(in oklab, var(--navy) 35%, transparent),
+    0 2px 0 0 color-mix(in oklab, white 60%, transparent) inset;
+  --shadow-float: 0 24px 60px -24px color-mix(in oklab, var(--navy) 40%, transparent);
+  --shadow-gold: 0 18px 50px -20px color-mix(in oklab, var(--gold) 65%, transparent);
+}
+
+:root {
+  --radius: 1.25rem;
+
+  --cream: oklch(0.985 0.012 95);
+  --navy: oklch(0.22 0.08 265);
+  --royal: oklch(0.52 0.18 258);
+  --emerald: oklch(0.62 0.14 162);
+  --gold: oklch(0.82 0.13 85);
+
+  --background: oklch(0.985 0.012 95);
+  --foreground: oklch(0.18 0.05 265);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.05 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.05 265);
+
+  --primary: oklch(0.22 0.08 265);
+  --primary-foreground: oklch(0.985 0.012 95);
+  --secondary: oklch(0.95 0.02 250);
+  --secondary-foreground: oklch(0.22 0.08 265);
+  --muted: oklch(0.95 0.015 250);
+  --muted-foreground: oklch(0.5 0.04 260);
+  --accent: oklch(0.82 0.13 85);
+  --accent-foreground: oklch(0.22 0.08 265);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.02 260);
+  --input: oklch(0.9 0.02 260);
+  --ring: oklch(0.52 0.18 258);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--gold) 55%, transparent);
+    color: var(--navy);
+  }
+}
+
+/* ---------- Animations ---------- */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -24px, 0) rotate(6deg);
+  }
+}
+@keyframes float-x {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(30px, -18px, 0);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes particle-rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120vh) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@utility glass {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, white 70%, transparent),
+    color-mix(in oklab, white 35%, transparent)
+  );
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid color-mix(in oklab, white 60%, transparent);
+  box-shadow: var(--shadow-glass);
+}
+@utility glass-dark {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--navy) 55%, transparent),
+    color-mix(in oklab, var(--navy) 25%, transparent)
+  );
+  backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid color-mix(in oklab, white 18%, transparent);
+}
+@utility glass-card {
+  background: linear-gradient(
+    140deg,
+    color-mix(in oklab, white 85%, transparent),
+    color-mix(in oklab, white 45%, transparent)
+  );
+  backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid color-mix(in oklab, white 70%, transparent);
+  box-shadow:
+    0 20px 50px -25px color-mix(in oklab, var(--navy) 35%, transparent),
+    inset 0 1px 0 0 color-mix(in oklab, white 90%, transparent);
+}
+@utility gold-text {
+  background: linear-gradient(
+    120deg,
+    oklch(0.78 0.14 80),
+    oklch(0.92 0.12 95),
+    oklch(0.78 0.14 80)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+@utility navy-grad {
+  background: radial-gradient(
+    120% 80% at 0% 0%,
+    oklch(0.32 0.1 260) 0%,
+    oklch(0.18 0.07 265) 60%,
+    oklch(0.12 0.06 265) 100%
+  );
+}
+@utility hero-overlay {
+  background:
+    radial-gradient(
+      60% 50% at 20% 30%,
+      color-mix(in oklab, var(--royal) 55%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 40% at 85% 70%,
+      color-mix(in oklab, var(--emerald) 45%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--navy) 55%, transparent),
+      color-mix(in oklab, var(--navy) 80%, transparent)
+    );
+}
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, white 25%, transparent);
+  border: 1px solid color-mix(in oklab, white 35%, transparent);
+  backdrop-filter: blur(12px);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+@utility tilt-hover {
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.5s ease;
+  &:hover {
+    transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+    box-shadow: var(--shadow-float);
+  }
+}
+@utility nav-link {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--royal));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s ease;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+@utility ripple {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, white 55%, transparent) 0%,
+      transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  &:hover::before {
+    opacity: 1;
+  }
+}
+@utility float-slow {
+  animation: float-slow 9s ease-in-out infinite;
+}
+@utility float-x {
+  animation: float-x 11s ease-in-out infinite;
+}
+@utility grad-anim {
+  background-size: 200% 200%;
+  animation: gradient-shift 14s ease infinite;
+}
